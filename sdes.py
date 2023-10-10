@@ -52,10 +52,10 @@ def feistel(input, key):
     xoredLeft = xored[0:4]
     xoredRight = xored[4:]
     #print(f"XOR: {(xored)}")
-    print(f"SBOX1: ({xoredLeft[0]}, {BinArrayTobin(xoredLeft[1:])})")
-    print(f"SBOX2: ({xoredRight[0]}, {BinArrayTobin(xoredRight[1:])})")
+    # print(f"SBOX1: ({xoredLeft[0]}, {BinArrayTobin(xoredLeft[1:])})")
+    # print(f"SBOX2: ({xoredRight[0]}, {BinArrayTobin(xoredRight[1:])})")
     result = binToBinArray((sbox1[xoredLeft[0]][BinArrayTobin(xoredLeft[1:])] << 3) | sbox2[xoredRight[0]][BinArrayTobin(xoredRight[1:])], 6)
-    print(f"RESULT: {result}")
+    # print(f"RESULT: {result}")
     return result
 
 
@@ -74,7 +74,7 @@ def sdes(input, maxRound):
     for i in range(1, maxRound + 1):
         print(f"[{i}] Left: {halfLeft} Right: {halfRight} Key: {keySchedule(key, i)}")
         output = sdesRound(halfLeft, halfRight, i)
-        print(f"[{i}] Output from round: {output}")
+        print(f"[{i}] Output from round: {output}\n")
         halfLeft = output[0]
         halfRight = output[1]
     return output
@@ -82,4 +82,4 @@ def sdes(input, maxRound):
 result = sdes(plaintext2, 3)
 
 
-print(f"SDES Result {result}")
+print(f"SDES Result L = {result[0]} R = {result[1]}")
