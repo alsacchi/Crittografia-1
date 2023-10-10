@@ -72,8 +72,8 @@ def sdes(input, maxRound):
     halfLeft = binToBinArray((input & (0b111111000000)) >> PLAINTEXT_LENGTH//2, PLAINTEXT_LENGTH//2)
     output = 0
     for i in range(1, maxRound + 1):
-        print(f"[{i}] Left: {halfLeft} Right: {halfRight} Key: {keySchedule(key, i + 1)}")
-        output = sdesRound(halfLeft, halfRight, i + 1)
+        print(f"[{i}] Left: {halfLeft} Right: {halfRight} Key: {keySchedule(key, i)}")
+        output = sdesRound(halfLeft, halfRight, i)
         print(f"[{i}] Output from round: {output}")
         halfLeft = output[0]
         halfRight = output[1]
